@@ -1,0 +1,121 @@
+:root {
+  --hf-yellow: #ffd21e;
+  --hf-yellow-light: #fff4cc;
+  --hf-orange: #ff9d00;
+  --hf-gray-50: #f9fafb;
+  --hf-gray-100: #f3f4f6;
+  --hf-gray-200: #e5e7eb;
+  --hf-gray-300: #d1d5db;
+  --hf-gray-400: #9ca3af;
+  --hf-gray-500: #6b7280;
+  --hf-gray-600: #4b5563;
+  --hf-gray-700: #374151;
+  --hf-gray-800: #1f2937;
+  --hf-gray-900: #111827;
+  --hf-blue: #2563eb;
+  --hf-green: #10b981;
+  --hf-red: #ef4444;
+  --hf-purple: #8b5cf6;
+
+  /* Theme-aware colors (light mode defaults) */
+  --bg-primary: var(--hf-gray-50);
+  --bg-secondary: white;
+  --bg-tertiary: var(--hf-gray-100);
+  --bg-hover: var(--hf-gray-50);
+  --border-primary: var(--hf-gray-200);
+  --border-secondary: var(--hf-gray-300);
+  --text-primary: var(--hf-gray-900);
+  --text-secondary: var(--hf-gray-600);
+  --text-muted: var(--hf-gray-500);
+  --text-placeholder: var(--hf-gray-400);
+
+  /* Button colors */
+  --btn-primary-bg: #111827;
+  --btn-primary-text: #ffffff;
+  --btn-primary-hover: #374151;
+  --btn-disabled-bg: #d1d5db;
+  --btn-disabled-text: #6b7280;
+
+  font-family: 'Source Sans Pro', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Dark theme */
+[data-theme="dark"] {
+  --bg-primary: #0d1117;
+  --bg-secondary: #161b22;
+  --bg-tertiary: #21262d;
+  --bg-hover: #30363d;
+  --border-primary: #30363d;
+  --border-secondary: #484f58;
+  --text-primary: #e6edf3;
+  --text-secondary: #8b949e;
+  --text-muted: #6e7681;
+  --text-placeholder: #484f58;
+  --hf-gray-50: #21262d;
+  --hf-gray-100: #30363d;
+  --hf-gray-200: #30363d;
+  --hf-gray-300: #484f58;
+  --hf-gray-400: #6e7681;
+  --hf-gray-500: #8b949e;
+  --hf-gray-600: #8b949e;
+  --hf-gray-700: #c9d1d9;
+  --hf-gray-900: #e6edf3;
+
+  /* Dark theme button colors */
+  --btn-primary-bg: #238636;
+  --btn-primary-text: #ffffff;
+  --btn-primary-hover: #2ea043;
+  --btn-disabled-bg: #21262d;
+  --btn-disabled-text: #484f58;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+}
+
+a {
+  color: var(--hf-blue);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+input {
+  font-family: inherit;
+}

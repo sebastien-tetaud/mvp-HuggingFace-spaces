@@ -1,0 +1,43 @@
+FROM pytorch/pytorch:2.4.0-cuda12.1-cudnn9-devel
+
+WORKDIR /app
+
+# Install system dependencies for eccodes and cartopy
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    ca-certificates \
+    git \
+    build-essential \
+    libeccodes-dev \
+    libeccodes-tools \
+    libgeos-dev \
+    libproj-dev \
+    proj-data \
+    proj-bin \
+    && rm -rf /var/lib/apt/lists/*
+
+# Download and install uv
+ADD https://astral.sh/uv/install.sh /uv-installer.sh
+RUN sh /uv-installer.sh && rm /uv-installer.sh
+
+# Ensure uv is on the PATH
+ENV PATH="/root/.local/bin:$PATH"
+
+# Copy application code
+COPY . .
+
+
+# Install Python dependencies (excluding flash-attn which needs special handling)
+RUN grep -v "flash-attn" requirements.txt > requirements-no-flash.txt && \
+    uv pip install --system -r requirements-no-flash.txt && \
+    rm requirements-no-flash.txt
+
+# Install flash-attn separately with special flags (optional, may fail on some systems)
+RUN uv pip install --system flash-attn --no-build-isolation || \
+    echo "flash-attn installation failed, continuing without it"
+
+# Expose Gradio default port
+EXPOSE 7860
+
+# Run the Gradio app
+CMD ["python", "app.py"]
